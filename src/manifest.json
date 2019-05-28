@@ -1,20 +1,29 @@
 {
   "manifest_version": 2,
   "name": "ruTanos",
-  "description": "",
-  "version": "0.0.1",
-  "author": "Jake Prins",
+  "description": "Клац і твій Google без ru контенту!",
+  "version": "0.0.2",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icons/icon.png",
     "default_title": "ruTanos"
+  },
+  "icons": { 
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png"
   },
   "content_scripts": [
     {
       "matches": [
-        "*://*.google.com/*"
+        "*://*.google.com/*",
+        "*://*.google.com.ua/*",
+        "*://*.google.ru/*",
+        "*://*.google.pl/*",
+        "*://*.google.de/*",
+        "*://*.google.it/*",
+        "*://*.google.es/*"
       ],
       "js": [
-        "main.bundle.js"
+        "rutanos.js"
       ]
     }
   ]

@@ -1,10 +1,10 @@
-import './style.css'
-import $ from './vendors/jquery-3.4.1.min'
-import disintegrate from './disintegrate'
+import $ from 'jquery';
+import './style.css';
+
+const pattern = /(\/ru\/)|\.ru|ru\.|\.рф/i;
 
 $('.iUh30').each((i, urlEl) => {
   const $urlEl = $(urlEl);
-  const pattern = /(\/ru\/)|\.ru|ru\.|\.рф/i;
   const url = $urlEl.text();
   const isRu = url.match(pattern);
 

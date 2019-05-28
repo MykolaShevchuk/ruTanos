@@ -1,3 +1,4 @@
+
 import html2canvas from './vendors/html2canvas.min';
 
 export default function disintegrate($elm) {
