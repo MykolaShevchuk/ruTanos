@@ -6,7 +6,5 @@
    devtool: 'inline-source-map',
    devServer: {
      contentBase: './dist',
-     writeToDisk: true,
-     open: true,
-   }
+     writeToDisk: true,   }
  });

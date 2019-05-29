@@ -2,7 +2,7 @@ import $ from 'jquery';
 import '../style.css';
 
 export default function blurSearchResults() {
-  const pattern = /(\/ru\/)|\.ru|ru\.|\.рф/i;
+  const pattern = /(\/ru\/)|\.ru\/|ru\.|\.рф/i;
 
   $('.iUh30').each((i, urlEl) => {
     const $urlEl = $(urlEl);

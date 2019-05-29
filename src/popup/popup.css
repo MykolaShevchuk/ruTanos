@@ -1,0 +1,15 @@
+body {
+  background-color: #fff;
+  width: 400px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+pre {
+  font-size: 12px;
+}
+
+.advice {
+  margin-top: 20px;
+}

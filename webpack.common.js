@@ -28,7 +28,8 @@ module.exports = {
   plugins: [
     new CopyPlugin([
       'src/manifest.json',
-      {from: 'src/icons', to: 'icons'}
+      {from: 'src/icons', to: 'icons'},
+      {from: 'src/popup', to: 'popup'}
     ]),
     new HtmlWebpackPlugin(),
   ]

@@ -2,11 +2,13 @@
   "manifest_version": 2,
   "name": "ruTanos",
   "description": "Клац і твій Google без ru контенту!",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "browser_action": {
     "default_icon": "icons/icon.png",
-    "default_title": "ruTanos"
+    "default_title": "ruTanos",
+    "default_popup": "popup/popup.html"
   },
+  "permissions": ["storage"],
   "icons": { 
     "16": "icons/icon16.png",
     "48": "icons/icon48.png"
@@ -14,17 +16,15 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.google.com/*",
-        "*://*.google.com.ua/*",
-        "*://*.google.ru/*",
-        "*://*.google.pl/*",
-        "*://*.google.de/*",
-        "*://*.google.it/*",
-        "*://*.google.es/*"
+        "*://google.com/search*",
+        "*://google.com.ua/search*",
+        "*://www.google.com/search*",
+        "*://www.google.com.ua/search*"
       ],
-      "js": [
+      "js": [ 
         "rutanos.js"
       ]
     }
-  ]
+  ],
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 }
