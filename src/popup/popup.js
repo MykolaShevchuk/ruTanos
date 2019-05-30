@@ -1,4 +1,3 @@
-
 $(function () {
   $turned_on = $('#turned_on');
 
