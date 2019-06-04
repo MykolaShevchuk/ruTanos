@@ -6,7 +6,7 @@
   "browser_action": {
     "default_icon": "icons/icon.png",
     "default_title": "ruTanos",
-    "default_popup": "popup/index.html"
+    "default_popup": "index.html"
   },
   "permissions": ["storage"],
   "icons": { 
