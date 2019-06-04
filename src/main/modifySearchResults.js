@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import '../style.css';
+import './styles.css';
 import containsRuDomain from './containsRuDomain';
 import containsRuChars from './containsRuChars';
 
@@ -7,7 +7,6 @@ const linkSelector = '.rc .r a';
 const titleSelector = '.LC20lb';
 const containerSelector = '.g';
 const hideClass = 'hide-container';
-
 
 const hideElementContaner = ($el) => {
   const $countainerEl = $el.closest(containerSelector);
@@ -33,7 +32,6 @@ export function hideSearchResults() {
     }
   })
 }
-
 
 export function showSearchResults() {
   $(containerSelector).removeClass(hideClass);

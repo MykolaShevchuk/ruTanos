@@ -1,11 +1,13 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/main.js'],
+  entry: {
+    main: './src/main/index.js',
+    popup: './src/popup/index.js'
+  },
   output: {
-    filename: 'rutanos.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -18,6 +20,11 @@ module.exports = {
         ]
       },
       {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader'
@@ -28,10 +35,9 @@ module.exports = {
   plugins: [
     new CopyPlugin([
       'src/manifest.json',
-      {from: 'src/icons', to: 'icons'},
-      {from: 'src/popup', to: 'popup'}
-    ]),
-    new HtmlWebpackPlugin(),
+      'src/popup/index.html',
+      { from: 'src/icons', to: 'icons' },
+    ])
   ]
 }
 

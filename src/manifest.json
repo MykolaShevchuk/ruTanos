@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "ruTanos",
   "description": "Клац і твій Google без ru контенту!",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "browser_action": {
     "default_icon": "icons/icon.png",
     "default_title": "ruTanos",
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/index.html"
   },
   "permissions": ["storage"],
   "icons": { 
@@ -22,7 +22,7 @@
         "*://www.google.com.ua/search*"
       ],
       "js": [ 
-        "rutanos.js"
+        "main.js"
       ]
     }
   ],
