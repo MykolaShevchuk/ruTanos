@@ -65,7 +65,7 @@ export function showSearchResults() {
   if (!items.length) {
       return;
   }
-  for (let item in items) {
+  for (let item of items) {
     item.classList.remove(hideClass);
   }
 }
