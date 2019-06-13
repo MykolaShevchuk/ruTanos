@@ -1,11 +1,11 @@
-import { showSearchResults, hideSearchResults } from './modifySearchResults';
+import { showSearchResults, handleSearchResults } from './modifySearchResults';
 import toggleIcon from '../common/toggleIcon';
 
 chrome.storage.sync.get('turnedOn', ({ turnedOn }) => {
   const turnedOnOrNotSet = turnedOn || turnedOn === undefined;
 
   if (turnedOnOrNotSet) {
-    hideSearchResults();
+    handleSearchResults();
   }
 
   toggleIcon(turnedOnOrNotSet);
@@ -15,7 +15,7 @@ chrome.storage.onChanged.addListener(changes => {
   const turnedOn = changes['turnedOn'] && changes['turnedOn'].newValue;
 
   if (turnedOn) {
-    hideSearchResults();
+    handleSearchResults();
   } else {
     showSearchResults();
   }

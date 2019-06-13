@@ -1,38 +1,71 @@
-import $ from 'jquery';
 import './styles.css';
 import containsRuDomain from './containsRuDomain';
 import containsRuChars from './containsRuChars';
 
-const linkSelector = '.rc .r a';
-const titleSelector = '.LC20lb';
 const containerSelector = '.g';
+const searchItemSelector = '.g .rc';
 const hideClass = 'hide-container';
 
-const hideElementContaner = ($el) => {
-  const $countainerEl = $el.closest(containerSelector);
-  $countainerEl.addClass(hideClass);
-}
+const hideSearchItem = (item) => {
+  const searchItemContainer = item.closest(containerSelector);
+  searchItemContainer && searchItemContainer.classList.add(hideClass);
+};
 
-export function hideSearchResults() {
-  $(linkSelector).each((i, urlEl) => {
-    const $urlEl = $(urlEl);
-    const url = $urlEl.attr('href');
+const ruDetector = {
+  selectors: {
+    translateLink: 'a[href^="https://translate.google.com/translate"]',
+    resultLink: 'a',
+    title: 'h3',
+    description: '.s .st'
+  },
 
-    if (containsRuDomain(url)) {
-      hideElementContaner($urlEl);
+  // whether translate href is contains sl=ru parameter ("sl=ru" means source language is russian)
+  // translate link looks like
+  // 'https://translate.google.com/translate?hl=uk&sl=ru&u=http://hdrezka.ag/cartoons/action/29584-kak-priruchit-drakona-3-2019.html&prev=search'
+  isTranslateFromRu: function (item) {
+    const translateLink = item.querySelector(this.selectors.translateLink);
+    if (!translateLink) {
+        return null;
     }
-  })
+    return /[?|&]sl=ru/.test(translateLink.href);
+  },
 
-  $(titleSelector).each(function() {
-    const $el = $(this);
-    const text = $el.text();
-
-    if (containsRuChars(text)) {
-      hideElementContaner($el);
+  isRuDomain: function (item) {
+    const resultLink = item.querySelector(this.selectors.resultLink);
+    if (!resultLink) {
+        return null;
     }
-  })
+    return containsRuDomain(resultLink.href);
+  },
+
+  isRuChars: function (item) {
+    const title = item.querySelector(this.selectors.title);
+    if (title && containsRuChars(title.textContent)) {
+        return true;
+    }
+    const description = item.querySelector(this.selectors.description);
+    return (description && containsRuChars(description.textContent));
+  }
+};
+
+export function handleSearchResults() {
+  const items = document.querySelectorAll(searchItemSelector);
+  if (!items.length) {
+    return;
+  }
+  for (let item of items) {
+    if (ruDetector.isTranslateFromRu(item) || ruDetector.isRuDomain(item) || ruDetector.isRuChars(item)) {
+        hideSearchItem(item);
+    }
+  }
 }
 
 export function showSearchResults() {
-  $(containerSelector).removeClass(hideClass);
+  const items = document.querySelectorAll(containerSelector);
+  if (!items.length) {
+      return;
+  }
+  for (let item of items) {
+    item.classList.remove(hideClass);
+  }
 }
