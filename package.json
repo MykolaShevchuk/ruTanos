@@ -42,7 +42,7 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
