@@ -2,12 +2,11 @@ import './styles.css';
 import containsRuDomain from './containsRuDomain';
 import containsRuChars from './containsRuChars';
 
-const containerSelector = '.g';
-const searchItemSelector = '.g .rc';
+const searchItemSelector = '.g';
 const hideClass = 'hide-container';
 
 const hideSearchItem = (item) => {
-  const searchItemContainer = item.closest(containerSelector);
+  const searchItemContainer = item.closest(searchItemSelector);
   searchItemContainer && searchItemContainer.classList.add(hideClass);
 };
 
@@ -50,6 +49,7 @@ const ruDetector = {
 
 export function handleSearchResults() {
   const items = document.querySelectorAll(searchItemSelector);
+
   if (!items.length) {
     return;
   }
