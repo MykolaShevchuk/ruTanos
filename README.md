@@ -1,4 +1,6 @@
 # ruTanos
+This is repository of Google Chrome plugin:
+https://chrome.google.com/webstore/detail/rutanos/lclakbkgdadioimjddglmnoioedafelc?hl=uk
 
 ## How to start develop:
 - npm i
